@@ -6,18 +6,31 @@ class ClickCounter < Qt::Widget
 
   def initialize
     super(nil)
-    @count_label = Qt::Label.new('0')
     layout = Qt::VBoxLayout.new
-    layout.addWidget(@count_label)
-    button = Qt::PushButton.new
-    button.object_name = 'clicker'
-    connect(button, SIGNAL(:clicked), self, SLOT(:click))
-    layout.addWidget(button)
+    layout.addWidget(create_label)
+    layout.addWidget(create_button)
     setLayout(layout)
   end
   
   def click
-    @count_label.text = @count_label.text.to_i + 1 
+    update_label
+  end
+  
+  def create_label
+    @count = 0
+    @count_label = Qt::Label.new(@count.to_s)
+  end
+
+  def update_label
+    @count += 1
+    @count_label.text = @count.to_s
+  end
+  
+  def create_button
+    button = Qt::PushButton.new
+    button.object_name = 'clicker'
+    connect(button, SIGNAL(:clicked), self, SLOT(:click))
+    button
   end
 
 end
