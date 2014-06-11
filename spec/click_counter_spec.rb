@@ -26,4 +26,15 @@ describe ClickCounter do
   it 'shows 0 before any clicks are made' do
     expect(window).to have_label_with_text('0')
   end
+  
+  it 'shows 1 after one click' do
+    find_widget('clicker').click
+    expect(window).to have_label_with_text('1')
+    expect(window).to_not have_label_with_text('0')
+  end
+  
+  def find_widget(name)
+    window.children.find{ |w| w.object_name==name }
+  end
+
 end
