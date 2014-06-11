@@ -1,7 +1,7 @@
 RSpec.shared_context :qt do
 
-  before do
-    app = Qt::Application.new(ARGV)
+  before(:all) do
+    @app = Qt::Application.new(ARGV)
   end
 
   def find_widget(name)
