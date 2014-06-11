@@ -1,0 +1,10 @@
+#! /usr/bin/env ruby
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
+
+require 'qt'
+require 'click_counter'
+
+app = Qt::Application.new(ARGV)
+ClickCounter.new.show
+app.exec
