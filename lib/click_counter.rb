@@ -17,6 +17,6 @@ class ClickCounter < Qt::Widget
   end
   
   def click
-    @count_label.text = '1'
+    @count_label.text = @count_label.text.to_i + 1 
   end
 end

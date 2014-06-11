@@ -33,6 +33,11 @@ describe ClickCounter do
     expect(window).to_not have_label_with_text('0')
   end
   
+  it 'shows 2 after two clicks' do
+    find_widget('clicker').click
+    find_widget('clicker').click
+    expect(window).to have_label_with_text('2')
+  end
   def find_widget(name)
     window.children.find{ |w| w.object_name==name }
   end
